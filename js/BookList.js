@@ -150,7 +150,6 @@ class LinkedList {
       if(this.head!==null){
       this.head = this.head.nextNode;
       }
-      return true;
     }
     this.size -= 1;
     return this.head.removebyId(id, this.head);
@@ -173,7 +172,7 @@ class LinkedList {
 
       information.push(book);
       let currentNode = this.head.nextNode;
-      while(currentNode!==null){
+      while(currentNode !== null){
       information.push(currentNode);
       currentNode = currentNode.nextNode;
     }
