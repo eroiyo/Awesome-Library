@@ -79,16 +79,7 @@ class Node {
     bookContainer.setAttribute('id', this.id);
     bookUl.appendChild(bookContainer);
     removeButton.onclick = () => {
-      const objective = document.getElementById(id);
-      objective.remove();
-      bookList.removebyId(id)
-      let information= 0;
-      if(bookList.size > 0){
-      information = bookList.saveInformation();
-      }else {
-        information = [];
-      }
-      localStorage.setItem('information', JSON.stringify(information));
+      remove(this.id);
     }
     if (this.next_node !== null) {
       this.next_node.showInformation(id + 1);
@@ -200,6 +191,19 @@ if (storageAvailable('localStorage')) {
 
 let idCount = bookList.size;
 const bookUl = document.querySelector('.book-list');
+
+function remove(id) {
+  const objective = document.getElementById(id);
+  objective.remove();
+  bookList.removebyId(id)
+  let information= 0;
+  if(bookList.size > 0){
+  information = bookList.saveInformation();
+  }else {
+    information = [];
+  }
+  localStorage.setItem('information', JSON.stringify(information));
+}
 
 function hidden() {
   while (bookUl.lastElementChild) {
