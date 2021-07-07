@@ -1,6 +1,7 @@
 /* eslint max-classes-per-file: ["error", 2] */
 let bookList;
 const bookUl = document.querySelector('.book-list');
+const tableContainer = document.querySelector('.tbody');
 
 class Node {
   constructor(title, id, author, nextNode = null) {
@@ -67,26 +68,30 @@ class Node {
     return null;
   }
 
-  showInformation(id) {
+  showInformation() {
     const removeButton = document.createElement('button');
-    const bookContainer = document.createElement('div');
-    const bookTitle = document.createElement('h2');
-    const bookAuthor = document.createElement('h2');
-    this.id = id;
+    const bookContainer = document.createElement('tr');
+    const title = document.createElement('td');
+    const author = document.createElement('td');
+    const buttonTd = document.createElement('td');
     removeButton.textContent = 'Remove';
 
-    bookTitle.textContent = this.title;
-    bookAuthor.textContent = this.author;
+    removeButton.classList.add('delete');
 
-    bookContainer.appendChild(bookTitle);
-    bookContainer.appendChild(bookAuthor);
-    bookContainer.appendChild(removeButton);
+    title.innerHTML = `<td>${this.title}</td>`;
+    author.innerHTML = `<td>${this.author}</td>`;
+
+    bookContainer.appendChild(title);
+    bookContainer.appendChild(author);
+    buttonTd.appendChild(removeButton);
+    bookContainer.appendChild(buttonTd);
+    tableContainer.appendChild(bookContainer);
     bookContainer.setAttribute('id', this.id);
     bookUl.appendChild(bookContainer);
     removeButton.onclick = () => {
-      const objective = document.getElementById(id);
+      const objective = document.getElementById(this.id);
       objective.remove();
-      bookList.removebyId(id);
+      bookList.removebyId(this.id);
       let information = 0;
       if (bookList.size > 0) {
         information = bookList.saveInformation();
@@ -96,7 +101,7 @@ class Node {
       localStorage.setItem('information', JSON.stringify(information));
     };
     if (this.nextNode !== null) {
-      this.nextNode.showInformation(id + 1);
+      this.nextNode.showInformation();
     }
   }
 }
@@ -146,10 +151,9 @@ class LinkedList {
   }
 
   removebyId(id) {
-    if (id === 0) {
-      if(this.head!==null){
+    if (this.head !== null) {
       this.head = this.head.nextNode;
-      }
+      return true;
     }
     this.size -= 1;
     return this.head.removebyId(id, this.head);
@@ -162,23 +166,22 @@ class LinkedList {
   }
 
   saveInformation() {
-    let information = [];
+    const information = [];
     if (this.head != null) {
-      let book = {
+      const book = {
         title: this.head.title,
         id: this.head.id,
         author: this.head.author,
       };
-
       information.push(book);
       let currentNode = this.head.nextNode;
-      while(currentNode !== null){
-      information.push(currentNode);
-      currentNode = currentNode.nextNode;
+      while (currentNode !== null) {
+        information.push(currentNode);
+        currentNode = currentNode.nextNode;
+      }
     }
+    return information;
   }
-  return information;
-}
 
   getInformation(information) {
     information.forEach((book) => {
@@ -212,8 +215,6 @@ if (storageAvailable('localStorage')) {
   }
 }
 
-let idCount = bookList.size;
-
 function hidden() {
   while (bookUl.lastElementChild) {
     bookUl.removeChild(bookUl.lastElementChild);
@@ -228,11 +229,9 @@ function showbook() {
 const addBook = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  const id = idCount;
+  const id = Date();
   bookList.add(title, id, author);
-  idCount += 1;
   const information = bookList.saveInformation();
-  console.log(information)
   localStorage.setItem('information', JSON.stringify(information));
   showbook();
 };

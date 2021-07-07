@@ -1,3 +1,99 @@
 body {
-  margin: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.sub {
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 0;
+}
+
+.label {
+  font-size: 1.2rem;
+}
+
+.contact-section div {
+  margin: auto;
+  margin-top: 50px;
+}
+
+.contact-section div h4 {
+  font-weight: 500;
+}
+
+.contact-section div ul li {
+  list-style-type: none;
+}
+
+.footer,
+.form-data,
+.book-list,
+.table-data {
+  justify-content: center;
+  align-items: center;
+}
+
+th {
+  font-size: 1.2rem;
+}
+
+.table {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.delete {
+  outline: none;
+  border-radius: 3px;
+  border: none;
+  background-color: red;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+.books-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.timezone {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.hidden{
+  display: none;
+}
+
+.visible{
+  display: block;
+}
+
+.contact-div{
+  display: none;
+}
+
+.book-section{
+  display: none;
+}
+
+.table{
+  height: 67vh;
+  overflow-y: scroll;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

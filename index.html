@@ -1,24 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link src="./css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Awesome Books</h1>
-    <div class="book-list">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light books-nav">
+    <a class="navbar-brand" href="#">Awesome Books</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav navbar-default ml-auto">
+        <a class="nav-item nav-link list-button visible" href="#">List</a>
+        <a class="nav-item nav-link form-button visible" href="#">Add New</a>
+        <a class="nav-item nav-link contact-button visible" href="#">Contact</a>
+      </div>
     </div>
-<form>
-    <h2>Add your book</h2>
-    <label for="title">Title</label><br>
-    <input type="text" name="title" id="title"><br>
-    <label for="author">Author</label><br>
-    <input type="text" name="author" id="author"><br>
-    <input type="submit" id="submit"></input>
-</form>
-<script src="js/BookList.js"></script>
+  </nav>
+</header>
+  <div class="main-container mt-5 table">
+    <div class="d-flex"><h2 class="timezone"></h2></div>
+    <div class="book-section"><h1 class="text-center">Awesome Books</h1>
+    <div class="d-flex table-data">
+      <table class=" table-striped w-50">
+        <thead>
+          <tr>
+            <th scope="col">Book</th>
+            <th>Title</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody book-list">
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-section">
+    <hr class="py-1 w-50 text-center">
+    <form class="d-flex form-data mt-5">
+      <div class="w-50">
+        <h2>Add your book</h2>
+        <label for="title" class="label">Title</label><br>
+        <input type="text" class="form-control" name="title" id="title"><br>
+        <label for="author" class="label">Author</label><br>
+        <input type="text" class="form-control" name="author" id="author"><br>
+        <input type="submit" class="btn-primary w-100 sub" id="submit"></input>
+      </div>
+    </form>
+  </div>
+
+  <section class="contact-section d-flex">
+    <div class="contact-div">
+      <h4>CONTACT US</h4>
+      <p>For equeries, please reach out on the address below</p>
+      <ul>
+        <li>Website:<a href="#">www.teamwork.com</a></li>
+      <li>Call sales:<a href="#">+260 000 334 453 </a></li>
+      <li>Send us a mail:<a href="#">info.gmail.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer d-flex bg-light py-5">
+    <div>
+      <h4>Developed and serviced by <span><a href="#">TeamWork</a></span></h4>
+      <p>Copyrights &copy2021, All Rights reserved</p>
+    </div>
+  </footer>
+    <script src="js/navigation.js" type="module"></script>
+    <script src="js/BookList.js"></script>
 </body>
+
 </html>
